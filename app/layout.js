@@ -1,9 +1,9 @@
 import Provider from "./Provider";
 import HeaderNavbar from "./components/HeaderNavbar";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Dosis } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const dosis = Dosis({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Restaurant-Finder",
@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={dosis.className}>
         <Provider>
           <HeaderNavbar />
           {children}
