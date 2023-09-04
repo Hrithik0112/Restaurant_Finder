@@ -13,9 +13,11 @@ export default function Home() {
     }
   }, [session]);
   return (
-    <div>
-      <h1>Lets begin the Project.</h1>
-      <button onClick={() => signOut()}>Sign Out</button>
+    <div className="grid grid-cols-4 h-screen">
+      {/* <h1>Lets begin the Project.</h1>
+      <button onClick={() => signOut()}>Sign Out</button> */}
+      <div className="bg-red-200">First</div>
+      <div className="bg-blue-200 col-span-3">Second</div>
     </div>
   );
 }
