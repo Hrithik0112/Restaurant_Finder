@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import CategoryList from "./components/Home/CategoryList";
 import AreaRange from "./components/Home/AreaRange";
+import RatingSelect from "./components/Home/RatingSelect";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -21,6 +22,7 @@ export default function Home() {
       <div className="first p-3">
         <CategoryList />
         <AreaRange />
+        <RatingSelect />
       </div>
       <div className="bg-blue-200 col-span-3">Second</div>
     </div>

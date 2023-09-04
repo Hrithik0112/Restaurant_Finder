@@ -15,6 +15,7 @@ const CategoryList = () => {
         p-2 m-2 rounded-lg grayscale hover:grayscale-0 cursor-pointer 
         ${selectedCategory == index ? "grayscale-0 border-[1px]" : null}`}
             onClick={() => setSelectedCategory(index)}
+            key={index}
           >
             <Image src={item.icon} alt={item.name} height={50} width={50} />
             {item.name}
