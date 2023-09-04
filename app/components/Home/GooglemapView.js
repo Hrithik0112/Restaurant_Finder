@@ -9,7 +9,7 @@ const GooglemapView = () => {
     height: "70vh",
   };
   const coordinates = { lat: 22.484619, lng: 88.357903 };
-  console.log(userLocation);
+  //   console.log(userLocation);
   return (
     <div>
       <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}>
