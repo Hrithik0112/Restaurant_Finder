@@ -9,6 +9,7 @@ import RatingSelect from "./components/Home/RatingSelect";
 import GooglemapView from "./components/Home/GooglemapView";
 import GlobalApi from "@/utils/GlobalApi";
 import { UserLocationContext } from "@/context/UserLocationContext";
+import BusinessList from "./components/Home/BusinessList";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -29,7 +30,7 @@ export default function Home() {
 
   const getGooglePlace = () => {
     GlobalApi.getGooglePlace(category, radius, userLocation.lat, userLocation.lng).then((resp) => {
-      // console.log(resp.data.product.results);
+      console.log(resp.data.product.results);
       setBusinessList(resp.data.product.results);
     });
   };
@@ -44,6 +45,12 @@ export default function Home() {
       </div>
       <div className="second col-span-3">
         <GooglemapView />
+        <div
+          className="md:absolute mx-2 w-[90%] md:w-[74%]
+           bottom-36 relative md:bottom-3"
+        >
+          <BusinessList businessList={businessList} />
+        </div>
       </div>
     </div>
   );
