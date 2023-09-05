@@ -10,12 +10,14 @@ import GooglemapView from "./components/Home/GooglemapView";
 import GlobalApi from "@/utils/GlobalApi";
 import { UserLocationContext } from "@/context/UserLocationContext";
 import BusinessList from "./components/Home/BusinessList";
+import SkeltonLoading from "./components/SkeltonLoading";
 
 export default function Home() {
   const { data: session } = useSession();
   const [category, setCategory] = useState();
   const [radius, setRadius] = useState(null);
   const [businessList, setBusinessList] = useState([]);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const { userLocation, setUserLocation } = useContext(UserLocationContext);
   useEffect(() => {
@@ -29,9 +31,11 @@ export default function Home() {
   }, [category, radius]);
 
   const getGooglePlace = () => {
+    setLoading(true);
     GlobalApi.getGooglePlace(category, radius, userLocation.lat, userLocation.lng).then((resp) => {
       console.log(resp.data.product.results);
       setBusinessList(resp.data.product.results);
+      setLoading(false);
     });
   };
   return (
@@ -44,14 +48,24 @@ export default function Home() {
         <RatingSelect />
       </div>
       <div className="second col-span-3">
-        <GooglemapView />
+        <GooglemapView businessList={businessList} />
         <div
           className="md:absolute mx-2 w-[90%] md:w-[74%]
            bottom-36 relative md:bottom-3"
         >
-          <BusinessList businessList={businessList} />
+          {!loading ? (
+            <BusinessList businessList={businessList} />
+          ) : (
+            <div className="flex gap-3">
+              {[1, 2, 3, 4, 5].map((item, index) => (
+                <SkeltonLoading key={index} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 }
+
+// <BusinessList businessList={businessList} />

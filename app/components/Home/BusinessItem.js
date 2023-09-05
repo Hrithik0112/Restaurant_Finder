@@ -2,9 +2,17 @@ import Image from "next/image";
 import React from "react";
 
 const BusinessItem = ({ business }) => {
+  const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
+  const photo_ref = business?.photos ? business?.photos[0]?.photo_reference : "";
   return (
     <div className="w-[180px] flex-shrink-0 p-2 rounded-lg bg-white">
-      <Image src="/tacos.png" alt={business.name} width={180} height={80} className="rounded-lg" />
+      <Image
+        src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photo_ref}&key=${GOOGLE_API_KEY}`}
+        alt={business.name}
+        width={180}
+        height={80}
+        className="rounded-lg object-cover h-[90px]"
+      />
       <h2>{business.name}</h2>
       <h2
         className="text-[10px] text-gray-400 
