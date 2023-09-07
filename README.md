@@ -2,6 +2,7 @@
 # Restaurant Finder
 
 Find Restaurants near you and have a great Dinner/lunch.
+next update soon
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
